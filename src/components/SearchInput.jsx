@@ -1,12 +1,15 @@
 import { Autocomplete, TextField } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setWeatherData, resetWeatherData } from "../store/WeatherSlice";
 
 export default function SearchInput() {
   const GEO_API_KEY = process.env.REACT_APP_GEO_APIFY_KEY;
   const WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState(null);
+  const dispatch = useDispatch();
 
   const handleSearchInput = async (e) => {
     const currentValue = e.currentTarget.value;
@@ -33,23 +36,29 @@ export default function SearchInput() {
   };
 
   const handleSelectedCity = (e, value) => {
-    // console.log("selectedCity", value);
+    if (!value) {
+      setSelectedCity(null);
+    }
     setSelectedCity(value);
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
+
     if (!selectedCity) {
+      dispatch(resetWeatherData());
       return;
     }
+
     const { lat, lon } = selectedCity;
-    console.log(lat, lon);
-    console.log(WEATHER_API_KEY);
+
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${WEATHER_API_KEY}`
       );
-      console.log(response);
+      // console.log(response);
+      const { name, main, sys, weather, wind } = response.data;
+      dispatch(setWeatherData({ name, main, sys, weather, wind }));
     } catch (error) {
       console.log(error);
     }
