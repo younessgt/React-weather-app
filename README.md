@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A weather application built using React and Redux that allows users to search for cities and view detailed weather information, including temperature, sunrise/sunset times, wind speed, and more. The app uses data from the [OpenWeatherMap API](https://openweathermap.org/) and [Geoapify API](https://www.geoapify.com/) for city and weather information.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **City Search**: Users can type in a city name, and the app provides autocomplete suggestions.
+- **Weather Data Display**: After selecting a city, users can view real-time weather data.
+- **Animations**: Weather information is displayed with smooth animations using Framer Motion.
+- **Responsive Design**: The interface is designed to be accessible on different screen sizes.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, Redux, Framer Motion, Material UI
+- **API**: Geoapify , OpenWeatherMap
+- **Styling**: Tailwind CSS
+- **Icons**: Font Awesome
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Structure
 
-### `npm test`
+- `components/`: Contains React components like `SearchInput`, `WeatherOutput`, `Wallpaper`, etc.
+- `store/`: Contains Redux setup and weather data slice.
+- `assets/`: Stores images like sunrise, windy, thermometer, and sunset icons.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Prerequisites
 
-### `npm run build`
+- **Node.js**: Ensure that Node.js and npm are installed. You can download them from [here](https://nodejs.org/).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone this repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/younessgt/React-weather-app.git
+   cd React-weather-app
+   ```
 
-### `npm run eject`
+2. Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Set up environment variables:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - Create a `.env` file in the root directory.
+   - Add your API keys as follows:
+     ```env
+     REACT_APP_GEO_APIFY_KEY=your_geoapify_api_key
+     REACT_APP_OPEN_WEATHER_API_KEY=your_openweather_api_key
+     ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Start the application:
+   ```bash
+   npm start
+   ```
 
-## Learn More
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **City Search**: Type a city name in the search bar. Autocomplete suggestions will appear based on the typed text.
+2. **Select a City**: Choose a city from the suggestions, then click "Search" to fetch the weather data.
+3. **Weather Display**: The weather details will appear with animated text and icons.
 
-### Code Splitting
+## Key Files
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **`SearchInput.jsx`**: Handles city search and autocompletion using Geoapify.
+- **`WeatherOutput.jsx`**: Displays the weather data with animations and formatting.
+- **`WeatherSlice.jsx`**: Contains Redux slice for managing weather data.
+- **`store.js`**: Configures the Redux store.
 
-### Analyzing the Bundle Size
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React**: Frontend library
+- **Redux**: State management
+- **Framer Motion**: Animation library
+- **Material UI**: UI components
+- **Axios**: HTTP client for API requests
+- **Font Awesome**: For weather icons
